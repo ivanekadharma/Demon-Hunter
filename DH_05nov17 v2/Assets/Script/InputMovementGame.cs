@@ -8,6 +8,7 @@ public class InputMovementGame : MonoBehaviour {
 	public float maxSpeed;
 	public float movePower = 10;
 	public float jumpPower = 100;
+    public bool isInputActive = true;
 
 	// Use this for initialization
 	void Start () {
@@ -41,14 +42,29 @@ public class InputMovementGame : MonoBehaviour {
 		}
 	}
 
-	void OnTriggerEnter(Collider col) {
-		if (col.gameObject.tag == "Node") {
-			maxSpeed += 2;
-		}
-	}
-	void OnTriggerExit(Collider col) {
-		if (col.gameObject.tag == "Node") {
-			maxSpeed -= 2;
-		}
-	}
+    public void setMaxSpeed(float speed)
+    {
+        maxSpeed = speed;
+    }
+
+    public void toggleInput()
+    {
+        isInputActive = !isInputActive;
+    }
+
+    void OnTriggerEnter(Collider col)
+    {
+        if (col.gameObject.tag == "Node")
+        {
+            maxSpeed += 2;
+        }
+    }
+    void OnTriggerExit(Collider col)
+    {
+        if (col.gameObject.tag == "Node")
+        {
+            maxSpeed -= 2;
+        }
+    }
+    
 }
