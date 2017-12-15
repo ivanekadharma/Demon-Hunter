@@ -3,7 +3,7 @@ using System.Collections;
 
 public class CarController : MonoBehaviour {
 
-	public float speed = 1500f;
+	private float speed = 1500f;
 	public float rotationSpeed = 15f;
     private bool isWaitAudio;
 
@@ -23,9 +23,12 @@ public class CarController : MonoBehaviour {
 	private float movement = 0f;
 	private float rotation = 0f;
 
+
+
     void Start()
     {
         isWaitAudio = false;
+		backSound.Play ();
     }
 	void Update ()
 	{
@@ -38,7 +41,7 @@ public class CarController : MonoBehaviour {
         if (!isWaitAudio)
         {
             isWaitAudio = true;
-            backSound.PlayOneShot(clip);
+            //backSound.PlayOneShot(clip);
             StartCoroutine(resetWaitAudio());
         }
 	}

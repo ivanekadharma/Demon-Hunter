@@ -7,7 +7,7 @@ public class Goal : MonoBehaviour {
 	{
 		if (colInfo.CompareTag("Player"))
 		{
-			Debug.Log("GAME WON! :D");
+			//Debug.Log("GAME WON! :D");
 			SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 		}
 	}
