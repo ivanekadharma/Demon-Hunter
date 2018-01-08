@@ -23,10 +23,12 @@ public class CarController : MonoBehaviour {
 	private float movement = 0f;
 	private float rotation = 0f;
 
+	public Quaternion originalRotationValue;
 
 
     void Start()
     {
+		originalRotationValue = transform.rotation;
         isWaitAudio = false;
 		backSound.Play ();
     }

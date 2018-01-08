@@ -6,10 +6,10 @@ using UnityEngine.UI;
 public class timer : MonoBehaviour {
 
 	public Text timerText;
-	private float secondsCount;
-	private int minuteCount;
-	private int hourCount;
-	private string tempText = "Your time : ";
+	public float secondsCount;
+	public int minuteCount;
+	public int hourCount;
+	private string tempText = "Time        : ";
 	void Update(){
 		UpdateTimerUI();
 	}
