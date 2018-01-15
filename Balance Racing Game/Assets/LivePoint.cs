@@ -22,29 +22,65 @@ public class LivePoint : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		
 		updateLp ();
 	}
 	void OnTriggerEnter2D (Collider2D colInfo)
 	{
 		if (colInfo.CompareTag("jurang") || colInfo.CompareTag("Collidable"))
 		{
-			LivePoints -= 1;
-			tempStage = StageFlag.flags;
-			GetComponent<scoring> ().score = 0;
-			GetComponent<timer> ().secondsCount = 0;
-			GetComponent<timer> ().minuteCount = 0;
-			GetComponent<timer> ().hourCount = 0;
-			GetComponent<fuel> ().countFuel = 20;
-			tempRotation = GetComponent<CarController> ().originalRotationValue;
-			transform.rotation = Quaternion.Slerp (transform.rotation, tempRotation, Time.time*rotationTempSpeed);
-			if(tempStage==2){
-				gameObject.transform.position = new Vector2 (-33, 99);
+			if(destroyCheckpoint.udahDapetCheckpoint!=1){
+				LivePoints -= 1;
+				tempStage = StageFlag.flags;
+				GetComponent<scoring> ().score = 0;
+				GetComponent<timer> ().secondsCount = 0;
+				GetComponent<timer> ().minuteCount = 0;
+				GetComponent<timer> ().hourCount = 0;
+				fuel.countFuel = 20;
+				tempRotation = GetComponent<CarController> ().originalRotationValue;
+				transform.rotation = Quaternion.Slerp (transform.rotation, tempRotation, Time.time*rotationTempSpeed);
+				if(tempStage==3){
+					gameObject.transform.position = new Vector2 (-33, 99);
+				}
+			}else if(destroyCheckpoint.udahDapetCheckpoint==1){
+				LivePoints -= 1;
+				fuel.countFuel = destroyCheckpoint.cpFuel;
+				tempRotation = GetComponent<CarController> ().originalRotationValue;
+				transform.rotation = Quaternion.Slerp (transform.rotation, tempRotation, Time.time*rotationTempSpeed);
+				gameObject.transform.position = destroyCheckpoint.checkpoint;
 			}
 	
+		}
+		if(colInfo.CompareTag("goalpoint")){
+			tempRotation = GetComponent<CarController> ().originalRotationValue;
+			transform.rotation = Quaternion.Slerp (transform.rotation, tempRotation, Time.time*rotationTempSpeed);
+			gameObject.transform.position = new Vector2(-59, 95);
 		}
 	}
 	public void updateLp(){
 		lp.text = " "+LivePoints+" ";
+		if(fuel.countFuel<0){
+			if(destroyCheckpoint.udahDapetCheckpoint!=1){
+				LivePoints -= 1;	
+				tempStage = StageFlag.flags;
+				GetComponent<scoring> ().score = 0;
+				GetComponent<timer> ().secondsCount = 0;
+				GetComponent<timer> ().minuteCount = 0;
+				GetComponent<timer> ().hourCount = 0;
+				fuel.countFuel = 20;
+				tempRotation = GetComponent<CarController> ().originalRotationValue;
+				transform.rotation = Quaternion.Slerp (transform.rotation, tempRotation, Time.time*rotationTempSpeed);
+				if(tempStage==3){
+					gameObject.transform.position = new Vector2 (-33, 99);
+				}
+			}else if(destroyCheckpoint.udahDapetCheckpoint==1){
+				LivePoints -= 1;
+				fuel.countFuel = destroyCheckpoint.cpFuel;
+				tempRotation = GetComponent<CarController> ().originalRotationValue;
+				transform.rotation = Quaternion.Slerp (transform.rotation, tempRotation, Time.time*rotationTempSpeed);
+				gameObject.transform.position = destroyCheckpoint.checkpoint;
+			}
+		}
 	}
 
 }

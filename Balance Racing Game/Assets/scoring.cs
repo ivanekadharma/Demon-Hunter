@@ -8,6 +8,7 @@ public class scoring : MonoBehaviour {
 
 	public Text scoring2;
 	public int score = 0;
+	public static int resultScore = 0;
 
 	// Use this for initialization
 	void Start () {
@@ -16,7 +17,11 @@ public class scoring : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		updateScore();	
+		if(Goal.gameOver==false){
+			updateScore();
+		}else if(Goal.gameOver==true){
+			resultScore = score;	
+		}
 	}
 
 	public void updateScore(){

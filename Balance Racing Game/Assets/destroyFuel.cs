@@ -19,7 +19,7 @@ public class destroyFuel : MonoBehaviour {
 		if (other.gameObject.tag == "Player") {
 			//coin5Song.Play ();
 			Destroy (gameObject);
-			other.GetComponent<fuel> ().countFuel+=3;
+			fuel.countFuel+=3;
 		}
 
 	}

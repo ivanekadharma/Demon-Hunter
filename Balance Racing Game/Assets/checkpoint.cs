@@ -8,7 +8,6 @@ public class checkpoint : MonoBehaviour {
 	public Transform tempPost;
 	private float x,y,z;
 	void Start () {
-		
 	}
 	
 	// Update is called once per frame

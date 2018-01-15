@@ -6,7 +6,8 @@ using UnityEngine.UI;
 public class fuel : MonoBehaviour {
 
 	public Text fuelStatus;
-	public float countFuel = 20;
+	public static float countFuel = 20;
+
 	// Use this for initialization
 	void Start () {
 		
@@ -14,7 +15,9 @@ public class fuel : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		updateFuel ();
+		if (countFuel > 0) {
+			updateFuel ();
+		}
 	}
 	public void updateFuel(){
 		countFuel -= (Time.deltaTime/2);

@@ -15,7 +15,7 @@ public class CarController : MonoBehaviour {
 	public Rigidbody2D rb;
 
     //ini buat backsound
-    public AudioSource backSound;
+    //public AudioSource backSound;
     public AudioClip clip;
     public bool isInputActive = true;
 
@@ -30,13 +30,19 @@ public class CarController : MonoBehaviour {
     {
 		originalRotationValue = transform.rotation;
         isWaitAudio = false;
-		backSound.Play ();
+		//backSound.Play ();
     }
 	void Update ()
 	{
-        
-		movement = -Input.GetAxisRaw("Vertical") * speed;
-		rotation = Input.GetAxisRaw("Horizontal");
+		if (Goal.gameOver==false) {
+			movement = -Input.GetAxisRaw ("Vertical") * speed;
+			rotation = Input.GetAxisRaw ("Horizontal");
+		} else {
+			//speed = 0;
+			//rotationSpeed = 0;
+			movement = 0;
+			rotation = 0;
+		}
 
 
 
