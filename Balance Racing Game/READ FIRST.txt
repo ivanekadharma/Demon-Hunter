@@ -21,6 +21,7 @@ FEATURE MENU
 	- Input "Mohammad Alfi shahri" for get 1901511380 total coins.
 	- Input "Ivan Ekadharma Yudianto" for get 1901460000 total coins.
 	- Input "LUTHFIA FITRIANI" for get 1901459030 total coins.
+	case sensitive and without quotes.
 10. Back button for back to the previous menu. 
 
 FEATURE GAME
